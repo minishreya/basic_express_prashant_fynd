@@ -1,0 +1,11 @@
+<script src="/js/app.js"></script>
+
+footer is working sending data  id of workshop name....
+<% if(workshops.length==0) { %>
+    <p>No work shop</p></div>
+    <% } %>
+<% workshops.forEach(workshop => { %>
+    <li><%= workshop.id %></li>
+<% }); %>
+</body>
+</html>

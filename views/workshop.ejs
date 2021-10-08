@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<%- include("partials/head",{title: "Coustomize workshops title"})-%>
+        <h1>List of workshops</h1>
+        <hr />
+        <%- include( "partials/nav" ) -%>
+        <div>
+            <% if(workshops.length==0) { %>
+        <p>No work shop</p></div>
+        <% } %>
+        <div>
+            <ul>
+                <% workshops.forEach(workshop => { %>
+                    <li><%= workshop.name %></li>
+                    <a href="<%=workshop.id%>" class="btn btn-primary">Details</a>
+
+                <% }); %>
+            </ul>
+        </div>
+    <%-include("partials/footer",{workshops:workshops})-%>
