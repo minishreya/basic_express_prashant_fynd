@@ -1,4 +1,7 @@
+require("./models/Workshopcopy")
 const express = require('express')
+const mongoose=require('mongoose')
+const dburl ="mongodb://localhost:27017/basicCRUDbyresturant"
 const servers = express()
 const port = process.env[0] || 5000
 console.log(process.env.NODE_ENV)
@@ -54,10 +57,27 @@ servers.use( '/pages', pageNotFound );
 servers.use( apiNotFound );
 servers.use(errorhandling)
 
-servers.listen(port, function (error, result) {
-    if (error) {
-        console.log(error)
-    }
-    console.log(" server is listining...", port)
-    console.log(`check http://localhost:${port}`)
+mongoose.connect(dburl).then(function(){
+    servers.listen(port, function (error, result) {
+        if (error) {
+            console.log(error)
+        }
+        console.log(" server is listining...", port)
+        console.log(`check http://localhost:${port}`)
+    })
+
 })
+
+
+// mongoose.connection.on( 'connected', () => {
+//     console.log( 'connected' );
+//     console.log("working.....")
+// });
+
+// mongoose.connection.on( 'error', error => {
+//     console.error( error.message );
+// });
+
+// mongoose.connection.on( 'disconnect', error => {
+//     console.error( error.message );
+// });
